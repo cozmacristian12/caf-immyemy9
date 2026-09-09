@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMMY & EMY — Pratiche per Immigrati e CAF, Torino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --paper:#f6faf7;
+    --ink:#132018;
+    --ink-soft:#54655c;
+    --green-vivid:#00b34a;
+    --green-deep:#0a6b3a;
+    --green-tint:#e7f8ee;
+    --green-lime:#c7e35a;
+    --line:#dfeee4;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Archivo Black', sans-serif;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+    text-transform:uppercase;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-weight:700;
+    color:var(--green-deep);
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{content:""; width:20px; height:2px; background:var(--green-vivid); display:inline-block;}
+
+  /* ---------- MOCK BANNER ---------- */
+  .mock-banner{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    font-size:13px;
+    padding:9px 16px;
+    letter-spacing:0.02em;
+  }
+  .mock-banner b{color:var(--green-lime);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1160px; margin:0 auto;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Archivo Black', sans-serif; font-size:19px; text-transform:uppercase;}
+  .logo .globe{width:30px; height:30px; border-radius:50%; flex-shrink:0;}
+  .navlinks{display:flex; gap:30px; font-size:14px; font-weight:600;}
+  .navlinks a{color:var(--ink-soft); transition:color .15s;}
+  .navlinks a:hover{color:var(--green-deep);}
+  .nav-cta{background:var(--green-vivid); color:#fff; padding:11px 20px; border-radius:999px; font-size:13.5px; font-weight:700; white-space:nowrap;}
+  .nav-cta:hover{background:var(--green-deep);}
+  @media (max-width:860px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(115deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.16) 18%, transparent 19%, transparent 100%),
+      linear-gradient(135deg, #d7f06c 0%, #6cc24a 42%, #0f8a45 78%, #045c33 100%);
+    padding:100px 0 90px;
+    color:#fff;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center; position:relative; z-index:2;}
+  .hero .eyebrow{color:#eafce0;}
+  .hero .eyebrow::before{background:#eafce0;}
+  .hero h1{
+    font-size:58px;
+    color:#fff;
+    -webkit-text-stroke:2px #0a3d20;
+    text-shadow:3px 3px 0 #0a3d20;
+    margin-bottom:18px;
+  }
+  .hero .tagline{
+    font-family:'Archivo Black', sans-serif;
+    text-transform:uppercase;
+    font-size:16px;
+    letter-spacing:0.04em;
+    color:#f3fff0;
+    margin-bottom:26px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
+  .btn-primary{
+    background:#fff; color:var(--green-deep);
+    padding:15px 26px; border-radius:999px; font-weight:800; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s, background .15s;
+  }
+  .btn-primary:hover{transform:translateY(-1px); background:var(--green-tint);}
+  .btn-secondary{
+    border:1.5px solid rgba(255,255,255,0.6); color:#fff;
+    padding:14px 24px; border-radius:999px; font-weight:700; font-size:14.5px;
+  }
+  .btn-secondary:hover{background:rgba(255,255,255,0.12);}
+  .hero-info{
+    display:flex; flex-direction:column; gap:10px;
+    font-size:14.5px; font-weight:600;
+  }
+  .hero-info span{opacity:0.95;}
+  .hero-info b{font-weight:800;}
+
+  .globe-decor{
+    width:100%; max-width:340px; aspect-ratio:1/1; margin:0 auto;
+    border-radius:50%;
+    position:relative;
+    filter:drop-shadow(0 30px 50px rgba(0,0,0,0.25));
+  }
+
+  /* ---------- COME FUNZIONA ---------- */
+  .steps{padding:72px 0 60px;}
+  .steps-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px;}
+  .step-card{
+    background:var(--paper); border:1.5px solid var(--line); border-radius:var(--radius);
+    padding:28px; position:relative;
+  }
+  .step-num{
+    font-family:'Archivo Black', sans-serif;
+    font-size:34px; color:var(--green-vivid);
+    margin-bottom:12px;
+  }
+  .step-card h3{font-size:16px; margin-bottom:8px; text-transform:none; font-family:'Inter'; font-weight:800;}
+  .step-card p{font-size:14px; color:var(--ink-soft);}
+
+  /* ---------- SERVICES ---------- */
+  section{padding:20px 0 88px;}
+  .section-head{max-width:640px; margin-bottom:8px;}
+  .section-head h2{font-size:36px;}
+  .section-head p{color:var(--ink-soft); font-size:15.5px; margin-top:14px;}
+
+  .search-box{
+    position:relative;
+    margin:28px 0 20px;
+  }
+  .search-box input{
+    width:100%;
+    padding:15px 20px 15px 46px;
+    border:1.5px solid var(--line);
+    border-radius:999px;
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+    color:var(--ink);
+    background:var(--paper);
+    transition:border-color .15s, background .15s;
+  }
+  .search-box input:focus{outline:none; border-color:var(--green-vivid); background:#fff;}
+  .search-box .icon{
+    position:absolute; left:18px; top:50%; transform:translateY(-50%);
+    color:var(--ink-soft); font-size:16px; pointer-events:none;
+  }
+  .cat-nav{
+    position:sticky; top:73px; z-index:40;
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:blur(6px);
+    display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto;
+    padding:12px 0 14px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:8px;
+    scrollbar-width:none;
+  }
+  .cat-nav::-webkit-scrollbar{display:none;}
+  .cat-chip{
+    flex-shrink:0;
+    padding:9px 16px;
+    border-radius:999px;
+    border:1.5px solid var(--line);
+    font-size:13px; font-weight:700;
+    color:var(--ink-soft);
+    white-space:nowrap;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .cat-chip:hover{border-color:var(--green-vivid); color:var(--green-deep);}
+  .cat-chip.active{background:var(--green-vivid); border-color:var(--green-vivid); color:#fff;}
+  .no-results{
+    display:none;
+    text-align:center;
+    padding:40px 20px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .no-results.show{display:block;}
+  .cat-block{margin-top:52px; scroll-margin-top:150px;}
+  .cat-title{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Archivo Black', sans-serif;
+    font-size:18px; text-transform:uppercase;
+    color:var(--green-deep);
+    margin-bottom:18px;
+  }
+  .cat-title::after{content:""; flex:1; height:2px; background:var(--line);}
+
+  .service-list{display:flex; flex-direction:column; gap:10px;}
+  .service-row{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:var(--bg); border:1.5px solid var(--line); border-radius:12px;
+    padding:18px 22px;
+    transition:border-color .15s, background .15s;
+  }
+  .service-row:hover{border-color:var(--green-vivid); background:var(--green-tint);}
+  .service-main{display:flex; flex-direction:column; gap:6px; flex:1; min-width:0;}
+  .service-name{font-size:15.5px; font-weight:700;}
+  .service-meta{display:flex; gap:10px; flex-wrap:wrap;}
+  .badge{
+    font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px;
+    display:inline-flex; align-items:center; gap:5px;
+  }
+  .badge-time{background:var(--green-tint); color:var(--green-deep);}
+  .book-btn{
+    background:var(--green-vivid); color:#fff;
+    padding:11px 20px; border-radius:999px;
+    font-size:13.5px; font-weight:700;
+    white-space:nowrap; flex-shrink:0;
+    border:none; cursor:pointer;
+    transition:background .15s;
+  }
+  .book-btn:hover{background:var(--green-deep);}
+  @media (max-width:640px){
+    .service-row{flex-direction:column; align-items:flex-start;}
+    .book-btn{align-self:stretch; text-align:center;}
+  }
+
+  /* ---------- ORARI + DOVE ---------- */
+  .tinted{background:var(--green-tint);}
+  .info-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:28px;}
+  .hours-card{background:var(--ink); color:#fff; border-radius:var(--radius); padding:34px;}
+  .hours-card h3{font-size:20px; margin-bottom:22px; color:#fff;}
+  .hours-row{display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid rgba(255,255,255,0.12); font-size:14.5px;}
+  .hours-row:last-child{border-bottom:none;}
+  .hours-row span:last-child{color:var(--green-lime); font-weight:700;}
+  .location-card{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius); padding:34px;}
+  .location-card h3{font-size:20px; margin-bottom:14px;}
+  .location-card p{color:var(--ink-soft); font-size:14.5px; margin-bottom:20px;}
+  .map-placeholder{
+    height:180px; border-radius:10px;
+    background:
+      linear-gradient(135deg, var(--green-tint) 25%, transparent 25%) -10px 0/20px 20px,
+      linear-gradient(225deg, var(--green-tint) 25%, transparent 25%) -10px 0/20px 20px,
+      linear-gradient(315deg, var(--green-tint) 25%, transparent 25%) 0px 0/20px 20px,
+      linear-gradient(45deg, var(--green-tint) 25%, #ffffff 25%) 0px 0/20px 20px;
+    border:1.5px dashed var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--green-deep); font-size:13px; font-weight:700; text-align:center; padding:12px;
+  }
+
+  /* ---------- CONTATTI ---------- */
+  .contact-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .contact-card{
+    border:1.5px solid var(--line); border-radius:var(--radius); padding:26px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .contact-card .ico{
+    width:40px; height:40px; border-radius:10px;
+    background:var(--green-tint); color:var(--green-deep);
+    display:flex; align-items:center; justify-content:center; font-size:18px;
+  }
+  .contact-card .label{font-size:12.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.04em; font-weight:700;}
+  .contact-card .value{font-size:16.5px; font-weight:700;}
+
+  /* ---------- CTA ---------- */
+  .cta-band{
+    background:linear-gradient(120deg, #0f8a45, #045c33);
+    color:#fff; border-radius:24px; padding:56px; text-align:center; margin:0 28px;
+  }
+  .cta-band h2{color:#fff; font-size:32px; margin-bottom:14px;}
+  .cta-band p{color:rgba(255,255,255,0.85); margin-bottom:28px; font-size:15px;}
+  .cta-band .btn-primary{background:#fff; color:var(--green-deep);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 32px; border-top:1px solid var(--line); margin-top:20px;}
+  .foot-grid{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; margin-bottom:32px;}
+  .foot-note{font-size:13px; color:var(--ink-soft); max-width:340px;}
+  .foot-links{display:flex; gap:26px; font-size:14px; color:var(--ink-soft); font-weight:600;}
+  .foot-bottom{font-size:12.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:24px; border-top:1px solid var(--line);}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:38px;}
+    .steps-grid{grid-template-columns:1fr;}
+    .info-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .cta-band{padding:36px 22px; margin:0 16px;}
+    .cta-band h2{font-size:24px;}
+  }
+
+  :focus-visible{outline:2.5px solid var(--green-vivid); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; scroll-behavior:auto !important;} }
+
+  /* toast for mock booking clicks */
+  #toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:#fff; padding:14px 22px; border-radius:999px;
+    font-size:13.5px; font-weight:600; opacity:0; pointer-events:none;
+    transition:opacity .2s, transform .2s; z-index:999; text-align:center; max-width:90vw;
+  }
+  #toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+  /* ---------- BOOKING MODAL ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(10,20,15,0.55);
+    display:none;
+    align-items:flex-start; justify-content:center;
+    padding:5vh 20px;
+    overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-card{
+    background:#fff; border-radius:20px;
+    width:100%; max-width:460px;
+    box-shadow:0 40px 80px -20px rgba(4,44,25,0.4);
+    overflow:hidden;
+    animation:modalIn .18s ease-out;
+  }
+  @keyframes modalIn{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  .modal-head{
+    background:linear-gradient(120deg,#0f8a45,#045c33);
+    color:#fff; padding:22px 26px;
+    display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+  }
+  .modal-head-text .eyebrow-modal{font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#d9f4c9; margin-bottom:4px;}
+  .modal-head-text h4{font-family:'Archivo Black', sans-serif; font-size:17px; text-transform:none; line-height:1.25;}
+  .modal-close{
+    background:rgba(255,255,255,0.18); border:none; color:#fff;
+    width:30px; height:30px; border-radius:50%; font-size:16px; cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .modal-close:hover{background:rgba(255,255,255,0.3);}
+  .modal-body{padding:26px;}
+  .modal-back{
+    background:none; border:none; color:var(--green-deep); font-weight:700; font-size:13.5px;
+    cursor:pointer; padding:0; margin-bottom:16px; display:inline-flex; align-items:center; gap:6px;
+  }
+  .modal-back:hover{text-decoration:underline;}
+  .modal-body h3{font-family:'Inter'; text-transform:none; font-size:17px; font-weight:800; margin-bottom:16px; color:var(--ink);}
+
+  .cal-nav{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+  .cal-nav-btn{
+    width:34px; height:34px; border-radius:50%; border:1.5px solid var(--line);
+    background:#fff; cursor:pointer; font-size:14px; color:var(--ink-soft);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cal-nav-btn:hover{border-color:var(--green-vivid); color:var(--green-deep);}
+  .cal-nav strong{font-size:15px; text-transform:capitalize;}
+
+  .cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:5px; text-align:center;}
+  .cal-dow{font-size:11.5px; font-weight:700; color:var(--ink-soft); padding:6px 0; text-transform:uppercase;}
+  .cal-day{
+    padding:11px 2px; border-radius:9px; font-size:13.5px; font-weight:600;
+    background:var(--green-tint); color:var(--green-deep); cursor:pointer; border:1.5px solid transparent;
+  }
+  .cal-day:hover{background:var(--green-vivid); color:#fff;}
+  .cal-day.disabled{
+    background:transparent; color:#cfd8d2; cursor:not-allowed;
+  }
+  .cal-day.disabled:hover{background:transparent; color:#cfd8d2;}
+
+  .time-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+  .time-slot{
+    padding:11px 4px; border-radius:10px; border:1.5px solid var(--line);
+    font-size:13.5px; font-weight:700; background:#fff; color:var(--ink); cursor:pointer;
+  }
+  .time-slot:hover{border-color:var(--green-vivid); background:var(--green-tint); color:var(--green-deep);}
+  .time-slot.taken{
+    background:#faf1f1; border-color:#f0d9d9; color:#b23b3b;
+    text-decoration:line-through; cursor:not-allowed;
+  }
+  .time-slot.taken:hover{background:#faf1f1; color:#b23b3b;}
+  .slot-legend{display:flex; gap:16px; margin-top:14px; font-size:12px; color:var(--ink-soft);}
+  .slot-legend span{display:inline-flex; align-items:center; gap:6px;}
+  .dot-legend{width:10px; height:10px; border-radius:3px; display:inline-block;}
+
+  .field{margin-bottom:15px;}
+  .field label{display:block; font-size:13px; font-weight:700; margin-bottom:6px; color:var(--ink);}
+  .field input, .field textarea{
+    width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px;
+    font-family:'Inter'; font-size:14.5px; color:var(--ink); background:var(--paper);
+    resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{outline:none; border-color:var(--green-vivid); background:#fff;}
+  .modal-submit{
+    width:100%; padding:14px; background:var(--green-vivid); color:#fff; border:none;
+    border-radius:999px; font-size:15px; font-weight:800; cursor:pointer; margin-top:6px;
+  }
+  .modal-submit:hover{background:var(--green-deep);}
+
+  .success-wrap{text-align:center; padding:10px 0 4px;}
+  .success-icon{
+    width:64px; height:64px; border-radius:50%; background:var(--green-tint); color:var(--green-deep);
+    display:flex; align-items:center; justify-content:center; font-size:30px; margin:0 auto 18px;
+  }
+  .success-wrap h3{font-family:'Archivo Black', sans-serif; font-size:20px; text-transform:none; color:var(--green-deep); margin-bottom:10px;}
+  .success-wrap p{color:var(--ink-soft); font-size:14.5px; margin-bottom:22px;}
+</style>
+</head>
+<body>
+
+<div class="mock-banner">
+  Anteprima <b>mockup</b> — design in fase di test, prenotazioni collegate a Google Sheets
+</div>
+
+<header>
+  <nav class="nav">
+    <div class="logo">
+      <svg class="globe" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#0a6b3a"/><path d="M6 14c4 3 8-2 12 1s10-1 15 3" stroke="#e7f8ee" stroke-width="2" fill="none" opacity="0.8"/><path d="M4 24c5 2 9-3 13 0s9 2 16-1" stroke="#e7f8ee" stroke-width="2" fill="none" opacity="0.8"/><ellipse cx="20" cy="20" rx="19" ry="19" fill="none" stroke="#c7e35a" stroke-width="1.5"/></svg>
+      Immy &amp; Emy
+    </div>
+    <div class="navlinks">
+      <a href="#servizi">Servizi</a>
+      <a href="#come-funziona">Come funziona</a>
+      <a href="#orari">Orari</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+    <a href="#servizi" class="nav-cta">Prenota ora</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">CAF · Pratiche per immigrati · Torino</span>
+      <h1>Immy &amp; Emy</h1>
+      <div class="tagline">Pratiche per immigrati e CAF</div>
+      <div class="hero-actions">
+        <a href="#servizi" class="btn-primary">Scegli un servizio →</a>
+        <a href="#contatti" class="btn-secondary">Contattaci</a>
+      </div>
+      <div class="hero-info">
+        <span>📍 <b>Via Monte Rosa, 101/B, 10154 — Torino</b></span>
+        <span>📞 <b>333 47 59 704</b> &nbsp;·&nbsp; ☎️ Tel/Fax <b>011 85 32 73</b></span>
+        <span>✉️ <b>caf.immyemy@libero.it</b></span>
+      </div>
+    </div>
+    <div>
+      <svg class="globe-decor" viewBox="0 0 300 300">
+        <defs>
+          <radialGradient id="gsheen" cx="35%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="55%" stop-color="#dff2c9"/>
+            <stop offset="100%" stop-color="#7cc24a"/>
+          </radialGradient>
+        </defs>
+        <circle cx="150" cy="150" r="140" fill="url(#gsheen)"/>
+        <path d="M40 110c30 20 55-15 85 5s65-8 110 15" stroke="#0a6b3a" stroke-width="10" fill="none" opacity="0.55"/>
+        <path d="M25 165c35 15 60-18 95 0s60 12 120-8" stroke="#0a6b3a" stroke-width="10" fill="none" opacity="0.5"/>
+        <path d="M55 210c30 12 55-10 85 3s55 6 95-10" stroke="#0a6b3a" stroke-width="9" fill="none" opacity="0.45"/>
+        <circle cx="150" cy="150" r="140" fill="none" stroke="#045c33" stroke-width="3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="come-funziona">
+  <div class="wrap">
+    <span class="eyebrow">Semplice e veloce</span>
+    <h2 style="font-size:32px;">Come funziona</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Scegli il servizio</h3>
+        <p>Sfoglia l'elenco qui sotto e trova la pratica di cui hai bisogno.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Vieni reindirizzato al calendario</h3>
+        <p>Il pulsante "Prenota" apre subito il calendario dell'operatore giusto per quel servizio, senza uscire dal sito.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Scegli l'orario libero</h3>
+        <p>Seleziona il giorno e l'ora che preferisci: l'appuntamento viene confermato subito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servizi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">I nostri servizi</span>
+      <h2>Servizi e prenotazioni</h2>
+      <p>Cerca il servizio di cui hai bisogno o scorri le categorie. Clicca su "Prenota" per scegliere data e orario direttamente qui sul sito.</p>
+    </div>
+
+    <div class="search-box">
+      <span class="icon">🔍</span>
+      <input type="text" id="service-search" placeholder="Cerca un servizio — es. SPID, cittadinanza, permesso di soggiorno…">
+    </div>
+
+    <nav class="cat-nav" id="cat-nav"></nav>
+
+    <div id="services-container"></div>
+    <div class="no-results" id="no-results">Nessun servizio trovato. Prova con un'altra parola chiave.</div>
+  </div>
+</section>
+
+<section id="orari" class="tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Quando trovarci</span>
+      <h2>Orari e sede</h2>
+    </div>
+    <div class="info-grid">
+      <div class="hours-card">
+        <h3>Orario di apertura</h3>
+        <div class="hours-row"><span>Lunedì – Venerdì</span><span>9:30–13:00 · 15:00–18:00</span></div>
+        <div class="hours-row"><span>Sabato</span><span>Chiuso</span></div>
+        <div class="hours-row"><span>Domenica</span><span>Chiuso</span></div>
+      </div>
+      <div class="location-card">
+        <h3>Dove siamo</h3>
+        <p>Via Monte Rosa, 101/B, 10154 — Torino (TO)</p>
+        <div class="map-placeholder">Mappa segnaposto — verrà inserita la posizione reale</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contatti">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Parla con noi</span>
+      <h2>Contatti</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="ico">📞</div>
+        <div class="label">Cellulare</div>
+        <a class="value" href="tel:+393347759704">333 47 59 704</a>
+      </div>
+      <div class="contact-card">
+        <div class="ico">☎️</div>
+        <div class="label">Tel / Fax</div>
+        <a class="value" href="tel:+390118532373">011 85 32 73</a>
+      </div>
+      <div class="contact-card">
+        <div class="ico">✉️</div>
+        <div class="label">Email</div>
+        <a class="value" href="mailto:caf.immyemy@libero.it" style="font-size:14.5px;">caf.immyemy@libero.it</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta-band">
+    <h2>Hai bisogno di assistenza?</h2>
+    <p>Scegli il servizio che ti serve e prenota il tuo appuntamento in pochi click.</p>
+    <a href="#servizi" class="btn-primary">Vai ai servizi ↑</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><svg class="globe" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#0a6b3a"/><path d="M6 14c4 3 8-2 12 1s10-1 15 3" stroke="#e7f8ee" stroke-width="2" fill="none" opacity="0.8"/></svg>Immy &amp; Emy</div>
+        <p class="foot-note" style="margin-top:12px;">Pratiche per immigrati e CAF a Torino. Contenuti di questa pagina a scopo di anteprima grafica.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#servizi">Servizi</a>
+        <a href="#orari">Orari</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Immy &amp; Emy — Via Monte Rosa 101/B, Torino</span>
+      <span>Sito di anteprima · link segnaposto</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== BOOKING MODAL ===== -->
+<div class="modal-overlay" id="booking-overlay">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="modal-head-text">
+        <div class="eyebrow-modal">Prenotazione</div>
+        <h4 id="modal-service-name">Servizio</h4>
+      </div>
+      <button class="modal-close" id="modal-close-btn" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- Step A: calendario -->
+      <div id="bk-step-date">
+        <h3>Scegli la data</h3>
+        <div class="cal-nav">
+          <button class="cal-nav-btn" id="cal-prev">‹</button>
+          <strong id="cal-month-year"></strong>
+          <button class="cal-nav-btn" id="cal-next">›</button>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+
+      <!-- Step B: orario -->
+      <div id="bk-step-time" style="display:none;">
+        <button class="modal-back" id="bk-back-to-date">← Torna al calendario</button>
+        <h3>Scegli l'orario — <span id="bk-selected-date"></span></h3>
+        <div class="time-grid" id="time-grid"></div>
+        <div class="slot-legend">
+          <span><span class="dot-legend" style="background:var(--green-tint);"></span>Disponibile</span>
+          <span><span class="dot-legend" style="background:#faf1f1;"></span>Non disponibile</span>
+        </div>
+      </div>
+
+      <!-- Step C: dati cliente -->
+      <div id="bk-step-form" style="display:none;">
+        <button class="modal-back" id="bk-back-to-time">← Torna agli orari</button>
+        <h3>I tuoi dati</h3>
+        <div class="field">
+          <label>Nome *</label>
+          <input type="text" id="bk-name" required>
+        </div>
+        <div class="field">
+          <label>Cognome *</label>
+          <input type="text" id="bk-surname" required>
+        </div>
+        <div class="field">
+          <label>Telefono *</label>
+          <input type="tel" id="bk-phone" required>
+        </div>
+        <div class="field">
+          <label>Note aggiuntive (opzionale)</label>
+          <textarea id="bk-notes" rows="3"></textarea>
+        </div>
+        <button class="modal-submit" id="bk-submit">Conferma prenotazione</button>
+      </div>
+
+      <!-- Step D: conferma -->
+      <div id="bk-step-success" style="display:none;">
+        <div class="success-wrap">
+          <div class="success-icon">✓</div>
+          <h3>Prenotazione confermata!</h3>
+          <p>Ti aspettiamo il <strong id="bk-success-date"></strong> alle <strong id="bk-success-time"></strong>.</p>
+          <button class="modal-submit" id="bk-new-booking">Nuova prenotazione</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  // ---- Elenco servizi: modifica qui quando servono modifiche ----
+  const CATEGORIES = [
+    {
+      title: "Cittadinanza e Soggiorno",
+      services: [
+        { name: "Cittadinanza", duration: "1 ora", minutes: 60, cal: "L" },
+        { name: "Carta di soggiorno — Informazioni", duration: "15 min", minutes: 15, cal: "S" },
+        { name: "Carta di soggiorno — Compilazione kit", duration: "1 ora", minutes: 60, cal: "S" },
+        { name: "Permessi di soggiorno — Compilazione kit (richiesta / rinnovo)", duration: "Durata da confermare", minutes: 60, cal: "S" },
+        { name: "Ricongiungimento familiare", duration: "1 ora", minutes: 60, cal: "L" },
+      ]
+    },
+    {
+      title: "Decreto Flussi e Sanatoria",
+      services: [
+        { name: "Decreto flussi e sanatoria — Informazioni", duration: "15 min", minutes: 15, cal: "L" },
+        { name: "Decreto flussi e sanatoria", duration: "1 ora", minutes: 60, cal: "L" },
+      ]
+    },
+    {
+      title: "Servizi Digitali e Anagrafici",
+      services: [
+        { name: "SPID — Richiesta SPID", duration: "15 min", minutes: 15, cal: "S" },
+        { name: "Residenza on-line", duration: "1 ora", minutes: 60, cal: "S" },
+        { name: "Certificati anagrafici", duration: "15 min", minutes: 15, cal: "S" },
+        { name: "Casellario giudiziale e carichi pendenti / procure", duration: "30 min", minutes: 30, cal: "S" },
+      ]
+    },
+    {
+      title: "Fiscale e CAF",
+      services: [
+        { name: "730 e Mod. Unico", duration: "1 ora", minutes: 60, cal: "L" },
+        { name: "Apertura e chiusura IVA", duration: "30 min", minutes: 30, cal: "L" },
+        { name: "Assegno unico", duration: "15 min", minutes: 15, cal: "S" },
+        { name: "Naspi", duration: "30 min", minutes: 30, cal: "S" },
+      ]
+    },
+    {
+      title: "Lavoro",
+      services: [
+        { name: "Contratti di lavoro domestico", duration: "1 ora", minutes: 60, cal: "S" },
+        { name: "Curriculum vitae", duration: "1 ora", minutes: 60, cal: "S" },
+      ]
+    },
+    {
+      title: "Legali e Internazionali",
+      services: [
+        { name: "Legalizzazioni / Apostille / Traduzioni", duration: "30 min", minutes: 30, cal: "L" },
+        { name: "Visti turismo / Assicurazioni sanitarie — Informazioni", duration: "1 ora", minutes: 60, cal: "L" },
+        { name: "Assistenza legale — Informazioni", duration: "15 min", minutes: 15, cal: "L" },
+      ]
+    },
+  ];
+
+  function slugify(str){
+    return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  }
+
+  function renderCatNav(){
+    const nav = document.getElementById('cat-nav');
+    nav.innerHTML = CATEGORIES.map((cat, i) => `
+      <a href="#cat-${slugify(cat.title)}" class="cat-chip${i === 0 ? ' active' : ''}" data-target="cat-${slugify(cat.title)}">${cat.title}</a>
+    `).join('');
+
+    nav.querySelectorAll('.cat-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        nav.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  }
+
+  function renderServices(){
+    const container = document.getElementById('services-container');
+    container.innerHTML = CATEGORIES.map(cat => `
+      <div class="cat-block" id="cat-${slugify(cat.title)}" data-cat="${slugify(cat.title)}">
+        <div class="cat-title">${cat.title}</div>
+        <div class="service-list">
+          ${cat.services.map((s, idx) => `
+            <div class="service-row" data-name="${s.name.toLowerCase()}">
+              <div class="service-main">
+                <div class="service-name">${s.name}</div>
+                <div class="service-meta">
+                  <span class="badge badge-time">⏱ ${s.duration}</span>
+                </div>
+              </div>
+              <button class="book-btn" data-cat-idx="${CATEGORIES.indexOf(cat)}" data-svc-idx="${idx}">Prenota</button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+
+    container.querySelectorAll('.book-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = CATEGORIES[btn.getAttribute('data-cat-idx')];
+        const service = cat.services[btn.getAttribute('data-svc-idx')];
+        openBooking(service);
+      });
+    });
+  }
+
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+  }
+
+  function setupSearch(){
+    const input = document.getElementById('service-search');
+    const noResults = document.getElementById('no-results');
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      let anyVisible = false;
+      document.querySelectorAll('.cat-block').forEach(block => {
+        let blockHasMatch = false;
+        block.querySelectorAll('.service-row').forEach(row => {
+          const match = row.getAttribute('data-name').includes(q);
+          row.style.display = match ? '' : 'none';
+          if (match){ blockHasMatch = true; anyVisible = true; }
+        });
+        block.style.display = blockHasMatch ? '' : 'none';
+      });
+      noResults.classList.toggle('show', !anyVisible);
+    });
+  }
+
+  renderCatNav();
+  renderServices();
+  setupSearch();
+
+  // =====================================================================
+  // ===================  SISTEMA DI PRENOTAZIONE  ======================
+  // =====================================================================
+
+  // URL del backend Google Apps Script (collegato al Google Sheet)
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4tbC8fpPLyMNXbJybYLp5JqvSBZ1arvl-SrpaW9QKcF6j9kU8c3u5-c5nuqIkjORz/exec";
+
+  const ORARI_LAVORO = [
+    { start: 9*60+30, end: 13*60 },   // 9:30 - 13:00
+    { start: 15*60,   end: 18*60 },   // 15:00 - 18:00
+  ];
+
+  let bkService = null;
+  let bkCalendarDate = new Date();
+  let bkSelectedDate = null;
+  let bkSelectedTime = null;
+
+  const overlay = document.getElementById('booking-overlay');
+
+  function openBooking(service){
+    bkService = service;
+    bkCalendarDate = new Date();
+    bkSelectedDate = null;
+    bkSelectedTime = null;
+    document.getElementById('modal-service-name').textContent = service.name;
+    showBkStep('date');
+    renderBkCalendar();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBooking(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function showBkStep(step){
+    ['date','time','form','success'].forEach(s => {
+      document.getElementById('bk-step-'+s).style.display = (s === step) ? 'block' : 'none';
+    });
+  }
+
+  function renderBkCalendar(){
+    const nomiMesi = ["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
+    const nomiGiorni = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
+    document.getElementById('cal-month-year').textContent = nomiMesi[bkCalendarDate.getMonth()] + " " + bkCalendarDate.getFullYear();
+
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+    nomiGiorni.forEach(g => {
+      const el = document.createElement('div');
+      el.className = 'cal-dow';
+      el.textContent = g;
+      grid.appendChild(el);
+    });
+
+    const anno = bkCalendarDate.getFullYear();
+    const mese = bkCalendarDate.getMonth();
+    const primoGiorno = new Date(anno, mese, 1).getDay();
+    const offset = primoGiorno === 0 ? 6 : primoGiorno - 1;
+    const giorniNelMese = new Date(anno, mese+1, 0).getDate();
+
+    for(let i=0; i<offset; i++){ grid.appendChild(document.createElement('div')); }
+
+    const oggi = new Date(); oggi.setHours(0,0,0,0);
+
+    for(let i=1; i<=giorniNelMese; i++){
+      const dataCella = new Date(anno, mese, i);
+      const el = document.createElement('div');
+      el.textContent = i;
+      const isPast = dataCella < oggi;
+      const isWeekend = dataCella.getDay() === 0 || dataCella.getDay() === 6;
+      if(isPast || isWeekend){
+        el.className = 'cal-day disabled';
+      } else {
+        el.className = 'cal-day';
+        el.onclick = () => selectBkDate(dataCella);
+      }
+      grid.appendChild(el);
+    }
+  }
+
+  document.getElementById('cal-prev').addEventListener('click', () => {
+    bkCalendarDate.setMonth(bkCalendarDate.getMonth()-1);
+    renderBkCalendar();
+  });
+  document.getElementById('cal-next').addEventListener('click', () => {
+    bkCalendarDate.setMonth(bkCalendarDate.getMonth()+1);
+    renderBkCalendar();
+  });
+
+  function selectBkDate(dateObj){
+    bkSelectedDate = dateObj;
+    document.getElementById('bk-selected-date').textContent = dateObj.toLocaleDateString('it-IT', { weekday:'long', day:'numeric', month:'long' });
+    renderBkTimeSlots();
+    showBkStep('time');
+  }
+
+  async function renderBkTimeSlots(){
+    const grid = document.getElementById('time-grid');
+    grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:20px; color:var(--ink-soft); font-size:13.5px;">Caricamento orari disponibili…</div>';
+
+    const dateString = formatDataISO_(bkSelectedDate);
+    let ocupate = [];
+
+    try{
+      const url = APPS_SCRIPT_URL + '?data=' + encodeURIComponent(dateString) + '&operator=' + encodeURIComponent(bkService.cal);
+      const res = await fetch(url);
+      const data = await res.json();
+      ocupate = data.ocupate || [];
+    } catch(err){
+      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:20px; color:#b23b3b; font-size:13.5px;">Impossibile caricare gli orari. Controlla la connessione e riprova.</div>';
+      return;
+    }
+
+    grid.innerHTML = '';
+
+    ORARI_LAVORO.forEach(finestra => {
+      let cursor = finestra.start;
+      while(cursor + bkService.minutes <= finestra.end){
+        const slotStart = cursor;              // valoare fixa pentru acest slot specific
+        const slotEnd = slotStart + bkService.minutes;
+        const h = Math.floor(slotStart/60), m = slotStart%60;
+        const timeStr = (h<10?'0'+h:h) + ':' + (m<10?'0'+m:m);
+
+        const occupato = ocupate.some(p => slotStart < p.end && slotEnd > p.start);
+
+        const btn = document.createElement('button');
+        btn.textContent = timeStr;
+        btn.className = 'time-slot' + (occupato ? ' taken' : '');
+        if(occupato){
+          btn.disabled = true;
+          btn.title = 'Non disponibile';
+        } else {
+          btn.onclick = () => selectBkTime(timeStr, slotStart, slotEnd);
+        }
+        grid.appendChild(btn);
+        cursor += 15;
+      }
+    });
+
+    if(!grid.children.length){
+      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:20px; color:var(--ink-soft); font-size:13.5px;">Nessun orario disponibile per questo giorno.</div>';
+    }
+  }
+
+  function formatDataISO_(d){
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return y + '-' + m + '-' + day;
+  }
+
+  function selectBkTime(label, start, end){
+    bkSelectedTime = { label, start, end };
+    showBkStep('form');
+  }
+
+  document.getElementById('bk-submit').addEventListener('click', async () => {
+    const nome = document.getElementById('bk-name').value.trim();
+    const cognome = document.getElementById('bk-surname').value.trim();
+    const telefono = document.getElementById('bk-phone').value.trim();
+
+    if(!nome || !cognome || !telefono){
+      showToast('Compila nome, cognome e telefono per continuare.');
+      return;
+    }
+
+    const submitBtn = document.getElementById('bk-submit');
+    const testoOriginale = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
+
+    const payload = {
+      data: formatDataISO_(bkSelectedDate),
+      operator: bkService.cal,
+      start: bkSelectedTime.start,
+      end: bkSelectedTime.end,
+      serviciu: bkService.name,
+      nume: cognome,     // Cognome
+      prenume: nome,     // Nome
+      telefono: telefono,
+      nota: document.getElementById('bk-notes').value.trim()
+    };
+
+    try{
+      const res = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+      const result = await res.json();
+
+      if(result.success){
+        document.getElementById('bk-success-date').textContent = bkSelectedDate.toLocaleDateString('it-IT');
+        document.getElementById('bk-success-time').textContent = bkSelectedTime.label;
+        showBkStep('success');
+      } else {
+        showToast(result.error || 'Questo orario è appena stato occupato. Scegli un altro orario.');
+        renderBkTimeSlots();
+        showBkStep('time');
+      }
+    } catch(err){
+      showToast('Errore di connessione. Riprova tra qualche secondo.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = testoOriginale;
+    }
+  });
+
+  document.getElementById('bk-back-to-date').addEventListener('click', () => showBkStep('date'));
+  document.getElementById('bk-back-to-time').addEventListener('click', () => showBkStep('time'));
+  document.getElementById('modal-close-btn').addEventListener('click', closeBooking);
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) closeBooking(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && overlay.classList.contains('open')) closeBooking(); });
+
+  document.getElementById('bk-new-booking').addEventListener('click', () => {
+    document.getElementById('bk-name').value = '';
+    document.getElementById('bk-surname').value = '';
+    document.getElementById('bk-phone').value = '';
+    document.getElementById('bk-notes').value = '';
+    closeBooking();
+  });
+</script>
+
+</body>
+</html>
